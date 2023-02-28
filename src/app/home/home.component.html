@@ -1,0 +1,53 @@
+<input [(ngModel)]="searchText" class="form-control text-white bg-transparent my-4" placeholder="Search by Movie Name...">
+
+
+<!-- Owl carosel -->
+<div>
+  <owl-carousel-o [options]="customOptions" >
+    <ng-container *ngFor="let movie of moviesList">
+      <ng-template carouselSlide [id]="movie.id">
+        <img [src]='imgURL+movie.poster_path' class="img-fluid"  >
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</div>
+
+<!-- trending movies -->
+<div class="row  my-2">
+  <div class="col-md-4 d-flex align-items-center">
+    <div class=" w-100">
+      <div class="brdr w-25"></div>
+      <h3 class="my-3">Trending <br>movies <br>to watch now</h3>
+      <h6 class="text-muted">most watched movies by day</h6>
+      <div class="brdr w-100"></div>
+    </div>
+  </div>
+  <div *ngFor="let movie of moviesList|search:searchText" class="col-md-2">
+    <div class=" my-4 router"  >
+      <img [src]='imgURL+movie.poster_path' class="img-fluid mb-3" routerLink="/details/{{movie.id}}/movie" >
+      <h3 class="h5">{{movie.title}}</h3>
+      <!-- <button (click)="showoverview()" class="btn btn-outline-info">see more</button>
+      <p *ngIf="seemore">{{movie.overview|seemore:20}}</p> -->
+    </div>
+  </div>
+</div>
+
+
+
+<!-- trending tv -->
+<div class="row  my-5">
+  <div class="col-md-4 d-flex align-items-center">
+    <div class=" w-100">
+      <div class="brdr w-25"></div>
+      <h3 class="my-3">Trending <br>TV <br>to watch now</h3>
+      <h6 class="text-muted">most watched Tv by day</h6>
+      <div class="brdr w-100"></div>
+    </div>
+  </div>
+  <div *ngFor="let tv of tvList " class="col-md-2">
+    <div class=" my-4" routerLink="/details/{{tv.id}}/tv">
+      <img [src]='imgURL+tv.poster_path' class="img-fluid mb-3">
+      <h3 class="h5">{{tv.name}}</h3>
+    </div>
+  </div>
+</div>
