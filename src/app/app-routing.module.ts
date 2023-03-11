@@ -17,14 +17,14 @@ import { TvComponent } from './tv/tv.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'login',pathMatch:'full'},
-  {path:'home',canActivate:[AuthGuard],component:HomeComponent},
-  {path:'about',component:AboutComponent},
-  {path:'tv',canActivate:[AuthGuard],component:TvComponent},
-  {path:'people',canActivate:[AuthGuard],component:PeopleComponent},
+  {path:'home',canActivate:[AuthGuard],component:HomeComponent ,title:'Home'},
+  {path:'about',component:AboutComponent,title:'About'},
+  {path:'tv',canActivate:[AuthGuard],component:TvComponent,title:'TV'},
+  {path:'people',canActivate:[AuthGuard],component:PeopleComponent,title:'people'},
   {path:'networks',component:NetworksComponent},
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
-  {path:'movies',canActivate:[AuthGuard],component:MoviesComponent},
+  {path:'movies',canActivate:[AuthGuard],component:MoviesComponent,title:'movies'},
   {path:'people/people/details/:id/:person',canActivate:[AuthGuard],component:PersonDetailsComponent},
   {path:'details/:id/:mediaType',canActivate:[AuthGuard],component:DetailsComponent},
 
